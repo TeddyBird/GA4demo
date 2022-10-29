@@ -5,8 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GA4 demo</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J15TGDMSD0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-J15TGDMSD0');
+
+        gtag('event', 'botton_click', {
+            'button_name': 'btn'
+        })
+    </script>
 </head>
 <body>
-    <button>按鈕</button>
+    <button class="'btn">按鈕</button>
+
+
+    <script>
+        const btn  = document.querySelector(".btn");
+        btn.addEventListener("click", function(){
+            gtag('event', 'botton_click');
+        }, false)
+    </script>
 </body>
 </html>
