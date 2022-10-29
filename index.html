@@ -8,6 +8,7 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J15TGDMSD0"></script>
     <script>
+        let x = 1;
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -15,8 +16,13 @@
         gtag('config', 'G-J15TGDMSD0');
 
         gtag('event', 'botton_click', {
-            'button_name': 'btn'
+            'button_name': 'btn',
+            'click_times': x
         })
+        gtag('event', 'test', {
+            'test_number': '123'
+        })
+
     </script>
 </head>
 <body>
@@ -27,7 +33,10 @@
         const btn  = document.querySelector(".btn");
         btn.addEventListener("click", function(){
             console.log("123");
-            gtag('event', 'botton_click');
+            gtag('event', 'botton_click', {
+                'button_name': 'btn',
+                'click_times': x++
+            });
         }, false);
 
     </script>
