@@ -22,6 +22,9 @@
         <li><a href="https://www.google.com/" class="google_link">Google</a></li>
         <li><a href="https://www.youtube.com/" class="YT_link">Youtube</a></li>
     </ul>
+    <section class="section1">section1</section>
+    <section class="section2">section2</section>
+    <section class="section3">section3</section>
 
 
     <script>
@@ -37,6 +40,25 @@
                 console.log(e.target);
             }, false);
         }
+
+        const section3 = document.querySelector(".section3");
+        const  options = {
+            root: null,
+            threshold: 0.5
+        }
+        const callback = (entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    gtag('event', 'page_finish', {
+                        'scroll_page': 'done'
+                    })
+                    observer.unobserve(section3);
+                }
+            });
+        }
+        const observer = new IntersectionObserver(callback, options);
+        observer.observe(section3);
+
     </script>
 </body>
 </html>
