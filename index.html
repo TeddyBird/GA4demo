@@ -15,14 +15,6 @@
         gtag('js', new Date());
 
         gtag('config', 'G-J15TGDMSD0');
-
-        gtag('event', 'botton_click', {
-            'button_name': 'btn',
-            'click_times': x
-        })
-        gtag('event', 'test', {
-            'test_number': '123'
-        })
     </script>
 </head>
 <body>
@@ -33,24 +25,17 @@
 
 
     <script>
-        const btn  = document.querySelector(".btn");
-        btn.addEventListener("click", function(){
-            console.log("123");
-            gtag('event', 'botton_click', {
-                'button_name': 'btn',
-                'click_times': x++
-            });
-        }, false);
-
         const links = document.querySelectorAll("a");
         for(let i = 0; i < links.length; i++){
             links[i].addEventListener("click", function(e){
+                e.preventDefault();
                 gtag('event', 'link_click', {
                     'link_url': e.target.href,
-                    'link_text': e.target.innerText,
+                    'link_text': e.target.textContent,
                     'link_class': e.target.className
                 })
-            })
+                console.log(e.target);
+            }, false);
         }
     </script>
 </body>
