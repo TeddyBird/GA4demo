@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GA4 demo</title>
+    <link rel="stylesheet" href="./style.css">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J15TGDMSD0"></script>
     <script>
@@ -22,11 +23,13 @@
         gtag('event', 'test', {
             'test_number': '123'
         })
-
     </script>
 </head>
 <body>
-    <button class="btn">按鈕</button>
+    <ul>
+        <li><a href="https://www.google.com/" class="google_link">Google</a></li>
+        <li><a href="https://www.youtube.com/" class="YT_link">Youtube</a></li>
+    </ul>
 
 
     <script>
@@ -39,6 +42,16 @@
             });
         }, false);
 
+        const links = document.querySelectorAll("a");
+        for(let i = 0; i < links.length; i++){
+            links[i].addEventListener("click", function(e){
+                gtag('event', 'link_click', {
+                    'link_url': e.target.href,
+                    'link_text': e.target.innerText,
+                    'link_class': e.target.className
+                })
+            })
+        }
     </script>
 </body>
 </html>
